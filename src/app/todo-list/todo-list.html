@@ -8,16 +8,16 @@
     <button (click)="addTodo()" >Add</button>
 </div>
 
-@if (todos().length===0){
+@if (todoService.todos().length===0){
     <p>No todos yet</p>
 } @else{
-    <h3>No of Todos : {{noOfTodos()}} </h3>
-    <h4>No of completed Todos : {{noOfCompletedTodos()}} </h4>
-    @for(todo of todos();track todo.id){
+    <h3>No of Todos : {{todoService.noOfTodos()}} </h3>
+    <h4>No of completed Todos : {{todoService.noOfCompletedTodos()}} </h4>
+    @for(todo of todoService.todos();track todo.id){
         <app-todo-item 
             [todo]="todo"
-            (toggled)="toggleTodo($event)"
-            (deleted)="removeTodo($event)"
+            (toggled)="todoService.toggleTodo($event)"
+            (deleted)="todoService.removeTodo($event)"
         />
     }
 }
