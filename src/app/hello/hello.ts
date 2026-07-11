@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-hello',
@@ -7,8 +8,12 @@ import { Component, signal } from '@angular/core';
   styleUrl: './hello.scss',
 })
 export class Hello {
-  name = signal("Vansh Gupta");
-  changeName(newName:string){
-    this.name.set(newName);
+  name = "Vansh Gupta"
+  paramName = signal<string|null>("");
+  constructor(private route:ActivatedRoute){
+    this.route.paramMap.subscribe((params)=>{
+      this.paramName.set(params.get("name"))
+    })
   }
+
 }

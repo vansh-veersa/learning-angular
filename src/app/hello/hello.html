@@ -1,2 +1,8 @@
 <!-- <p>hello works!</p> -->
-<p>{{name()}}</p>
+<p>{{name}}</p>
+@if (paramName()){
+    <p>This name came from parameters {{paramName()}}</p>
+}
+@else{
+    <p>No name passed via params</p>
+}

@@ -3,6 +3,12 @@ import { Hello } from './hello/hello';
 import { TodoList } from './todo-list/todo-list';
 
 export const routes: Routes = [
-    {path:"hello",component:Hello},
-    {path:"todo",component:TodoList}
+  {
+    path: 'hello',
+    children: [
+      { path: '', component: Hello },
+      { path: ':name', component: Hello },
+    ],
+  },
+  { path: 'todo', component: TodoList },
 ];
