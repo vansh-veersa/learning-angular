@@ -14,10 +14,10 @@
     <h3>No of Todos : {{noOfTodos()}} </h3>
     <h4>No of completed Todos : {{noOfCompletedTodos()}} </h4>
     @for(todo of todos();track todo.id){
-        <li>
-            <input type="checkbox" value="todo.done" (input)="toggleTodo(todo.id)" >
-            <span>{{todo.text}}</span>
-            <button (click)="removeTodo(todo.id)" >Delete Todo</button>
-        </li>
+        <app-todo-item 
+            [todo]="todo"
+            (toggled)="toggleTodo($event)"
+            (deleted)="removeTodo($event)"
+        />
     }
 }

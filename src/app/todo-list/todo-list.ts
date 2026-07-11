@@ -1,15 +1,10 @@
 import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-interface Todo{
-  id:number;
-  text:String;
-  done:boolean
-}
+import { TodoItem } from '../todo-item/todo-item';
 
 @Component({
   selector: 'app-todo-list',
-  imports: [FormsModule],
+  imports: [FormsModule,TodoItem],
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.scss',
   standalone:true
