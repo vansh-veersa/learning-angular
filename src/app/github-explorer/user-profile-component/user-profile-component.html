@@ -1,0 +1,34 @@
+@if (loading()) {
+  <p>Loading user data...</p>
+}
+@else if (errorMessage()) {
+  <p>{{ errorMessage() }}</p>
+}
+@else if (data(); as d) {
+  <div>
+    <h2>{{ d.userDetails.username }}</h2>
+    <img
+      [src]="d.userDetails.avatarUrl"
+      [alt]="d.userDetails.username"
+      width="100"
+      height="100" />
+  </div>
+
+  <h2>Repositories</h2>
+
+  @if (d.userRepositories.length > 0) {
+    <ul>
+      @for (repo of d.userRepositories; track repo.name) {
+        <li>
+          <a [routerLink]="['/github', d.userDetails.username, repo.name]">
+            {{ repo.name }}
+          </a>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p>No repositories found for this user.</p>
+  }
+} @else {
+  <p>User not found.</p>
+}

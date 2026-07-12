@@ -1,0 +1,19 @@
+<h2>This is github explorer</h2>
+<input type="text" [formControl]="searchControl" placeholder="Search for a user..." />
+@if(loading()) {
+  <p>Loading...</p>
+} @else if (errorMessage()) {
+  <p>{{ errorMessage() }}</p>
+} @else if (apiResponse().length === 0) {
+  <p>No users found.</p>
+}
+@else if(apiResponse().length > 0) {
+  <ul>
+    @for (user of apiResponse();track user.username) {
+      <li>
+        <img [src]="user.avatarUrl" [alt]="user.username" width="50" height="50" />
+        <a [routerLink]="['/github', user.username]">{{user.username}}</a>
+      </li>
+    }
+  </ul>
+}
