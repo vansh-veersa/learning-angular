@@ -1,6 +1,6 @@
-import { computed, Service, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 
-@Service()
+@Injectable()
 export class TodoService {
     todos = signal<Todo[]>([])
     noOfTodos = computed(() => this.todos().length)
