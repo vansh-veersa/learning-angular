@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.github-repo {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.repo-card {
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.repo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.repo-header img {
+  border-radius: 50%;
+}
+
+.repo-details p {
+  margin: 0.25rem 0;
+}

@@ -24,7 +24,7 @@ export class HomeComponent {
   
   apiResponse = toSignal(
     this.searchControl.valueChanges.pipe(
-      debounceTime(300),
+      debounceTime(450),
       tap(() => {
         this.errorMessage.set(null);
         this.loading.set(true);

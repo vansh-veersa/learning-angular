@@ -1,43 +1,50 @@
-@if (loading()) {
-  <p>Loading user data...</p>
-}
-@else if (errorMessage()) {
-  <p>{{ errorMessage() }}</p>
-}
-@else if (data(); as d) {
-  <div>
-    <h2>{{ d.userDetails.username }}</h2>
-    <img
-      [src]="d.userDetails.avatarUrl"
-      [alt]="d.userDetails.username"
-      width="100"
-      height="100" />
-  </div>
-  <div>
-    Name: {{d.userDetails.name}}<br />
-    Location: {{d.userDetails.location}}<br />
-    Bio: {{d.userDetails.bio}}<br />
-    followers: {{d.userDetails.followers}}<br />
-    following: {{d.userDetails.following}}<br />
-    company: {{d.userDetails.company}}<br />
-    public repos: {{d.userDetails.publicRepos}}<br />
-  </div>
-
-  <h2>Repositories</h2>
-
-  @if (d.userRepositories.length > 0) {
-    <ul>
-      @for (repo of d.userRepositories; track repo.name) {
-        <li>
-          <a [routerLink]="['/github', d.userDetails.username, repo.name]">
-            {{ repo.name }}
-          </a>
-        </li>
-      }
-    </ul>
-  } @else {
-    <p>No repositories found for this user.</p>
+<div class="github-profile">
+  @if (loading()) {
+    <p>Loading user data...</p>
   }
-} @else {
-  <p>User not found.</p>
-}
+  @else if (errorMessage()) {
+    <p>{{ errorMessage() }}</p>
+  }
+  @else if (data(); as d) {
+    <div class="profile-card">
+      <div class="profile-header">
+        <img
+          [src]="d.userDetails.avatarUrl"
+          [alt]="d.userDetails.username"
+          width="100"
+          height="100" />
+        <div>
+          <h2>{{ d.userDetails.username }}</h2>
+          <p>{{ d.userDetails.name }}</p>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        <p><strong>Location:</strong> {{ d.userDetails.location }}</p>
+        <p><strong>Bio:</strong> {{ d.userDetails.bio }}</p>
+        <p><strong>Followers:</strong> {{ d.userDetails.followers }}</p>
+        <p><strong>Following:</strong> {{ d.userDetails.following }}</p>
+        <p><strong>Company:</strong> {{ d.userDetails.company }}</p>
+        <p><strong>Public repos:</strong> {{ d.userDetails.publicRepos }}</p>
+      </div>
+
+      <h3>Repositories</h3>
+
+      @if (d.userRepositories.length > 0) {
+        <ul class="repo-list">
+          @for (repo of d.userRepositories; track repo.name) {
+            <li class="repo-item">
+              <a [routerLink]="['/github', d.userDetails.username, repo.name]">
+                {{ repo.name }}
+              </a>
+            </li>
+          }
+        </ul>
+      } @else {
+        <p>No repositories found for this user.</p>
+      }
+    </div>
+  } @else {
+    <p>User not found.</p>
+  }
+</div>

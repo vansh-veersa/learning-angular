@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.github-profile {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.profile-card {
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  img {
+    border-radius: 50%;
+  }
+}
+
+.profile-details p {
+  margin: 0.25rem 0;
+}
+
+h3 {
+  margin-top: 1rem;
+}
+
+.repo-list {
+  list-style: none;
+  margin: 0.5rem;
+}
+
+.repo-item {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}

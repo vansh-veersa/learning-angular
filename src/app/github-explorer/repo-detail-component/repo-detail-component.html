@@ -1,4 +1,5 @@
-<!-- @if (loading()) {
+<div class="github-repo">
+  <!-- @if (loading()) {
   <p>Loading repository data...</p>
 }
  @else if (errorMessage()) {
@@ -19,23 +20,31 @@
 } -->
 
 <!-- This is another way to display repository details where we use the httpResource function to fetch the data -->
-@if(!(params()?.user && params()?.repo)) {
-  <p>Invalid repository URL.</p>
-} @else if(repoData.isLoading()) {
-  <p>Loading repository data...</p>
-} @else if (repoData.error(); as e) {
-  <p>{{ e.message }}</p>
-} @else if(repoData.value(); as d) {
-  <div>
-    <img height="50" [src]="d.owner.avatar_url" alt="Owner Avatar" />
-    <h2>{{ d.name }}</h2>
-    <p>{{ d.description }}</p>
-    <p>Owner: {{ d.owner.login }}</p>
-    <p>Stars: {{ d.stargazers_count }}</p>
-    <p>Forks: {{ d.forks_count }}</p>
-    <p>Open Issues: {{ d.open_issues_count }}</p>
-    <p>Language: {{ d.language }}</p>
-  </div>
-} @else {
-  <p>Repository not found.</p>
-}
+  @if(!(params()?.user && params()?.repo)) {
+    <p>Invalid repository URL.</p>
+  } @else if(repoData.isLoading()) {
+    <p>Loading repository data...</p>
+  } @else if (repoData.error(); as e) {
+    <p>{{ e.message }}</p>
+  } @else if(repoData.value(); as d) {
+    <div class="repo-card">
+      <div class="repo-header">
+        <img height="50" [src]="d.owner.avatar_url" alt="Owner Avatar" />
+        <div>
+          <h2>{{ d.name }}</h2>
+          <p>{{ d.description }}</p>
+        </div>
+      </div>
+
+      <div class="repo-details">
+        <p><strong>Owner:</strong> {{ d.owner.login }}</p>
+        <p><strong>Stars:</strong> {{ d.stargazers_count }}</p>
+        <p><strong>Forks:</strong> {{ d.forks_count }}</p>
+        <p><strong>Open Issues:</strong> {{ d.open_issues_count }}</p>
+        <p><strong>Language:</strong> {{ d.language }}</p>
+      </div>
+    </div>
+  } @else {
+    <p>Repository not found.</p>
+  }
+</div>
