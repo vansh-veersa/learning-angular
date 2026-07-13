@@ -23,7 +23,7 @@ type GitHubUserDetailsResponse = {
   public_repos: number;
 };
 
-type GitHubRepoResponse = {
+export type GitHubRepoResponse = {
   name: string;
   description: string | null;
   html_url: string;
